@@ -1,0 +1,130 @@
+<script>
+$(document).ready(function(){
+    $("#nama_paket").on('change', function(){
+        //alert("berhasil");
+        var idPaket = $(this).val();
+
+        if(idPaket){
+            window.location.href = 'form_pendaftaran.php? id_paket_wisata=' + idPaket;
+        }
+    });
+
+    $("#btn-hitung").on('click', function(){
+        event.preventDefault();
+        //alert("tombol di click");
+        var harga_penginapan = 0;
+        var harga_transportasi = 0;
+        var harga_makan = 0;
+        var jumlah_peserta = 1;
+        var jumlah_hari = 1;
+
+        if($('#layanan_penginapan').is(':checked')){
+            harga_penginapan = $('#layanan_penginapan').val();
+        } 
+
+        if($('#layanan_transportasi').is(':checked')){
+            harga_transportasi = $('#layanan_transportasi').val();
+        }
+
+        if($('#layanan_makan').is(':checked')){
+            harga_makan = $('#layanan_makan').val();
+        }
+
+        
+        jumlah_hari = $('#jumlah_hari ').val();
+        jumlah_peserta = $('#jumlah_peserta ').val();
+       
+
+        var harga_paket = parseInt(harga_penginapan) + parseInt(harga_transportasi) + parseInt(harga_makan) ;
+
+        var harga_paket_formated = harga_paket.toLocaleString ('de-DE');
+
+        var jumlah_tagihan = harga_paket * parseInt(jumlah_hari) * parseInt(jumlah_peserta) ;
+        
+        var jumlah_tagihan_formated = jumlah_tagihan.toLocaleString ('de-DE');
+
+
+        if((jumlah_peserta<1)||(jumlah_hari<1)){
+            alert("jumlah hari dan jumlah peserta minimal 1")
+        }else{
+            if(parseInt(harga_transportasi)>0){
+            $('#harga_paket').val(harga_paket_formated);
+            $('#jumlah_tagihan').val(jumlah_tagihan_formated);
+        }else{
+    
+        alert("wajib menyertakan paket transportasi");
+        }
+        } 
+    })
+
+
+    $("#btn-reset").on('click', function(){
+        event.preventDefault();
+            $('#harga_paket').val("");
+            $('#jumlah_tagihan').val("");
+            $('#jumlah_hari').val(1);
+            $('#jumlah_peserta').val(1);
+            $('#layanan_makan').prop('checked', true);
+            $('#layanan_penginapan').prop('checked', true);
+            $('#layanan_transportasi').prop('checked', true);
+    })
+  });
+</script>
+
+
+
+
+
+<?php
+if($_POST){
+    include_once("connection.php");
+
+    $id_daftar_pesanan=$_POST['id_daftar_pesanan'];
+    $id_paket_wisata=$_POST['nama_paket'];
+    $nama_pemesan = $_POST['nama_pemesan'];
+    $no_tlp = $_POST['no_tlp'];
+    $tgl_pesan= $_POST['tgl_pesan'];
+    $jumlah_hari = $_POST['jumlah_hari'];
+
+    //if($_POST['layanan_penginapan']>0)
+
+    if(isset($_POST['layanan_penginapan'])){
+        $layanan_penginapan = "Y";
+    }else{
+        $layanan_penginapan = "N";
+    }
+
+
+    if(isset($_POST['layanan_transportasi'])){
+        $layanan_transportasi = "Y";
+    }else{
+        $layanan_transportasi = "N";
+    }
+
+
+    if(isset($_POST['layanan_makan'])){
+        $layanan_makan = "Y";
+    }else{
+        $layanan_makan = "N";
+    }
+
+
+    $jumlah_peserta=$_POST['jumlah_peserta'];
+
+    $harga_paket_str=$_POST['harga_paket'];
+    $harga_paket=str_replace(".","",$harga_paket_str);
+    $harga_paket= (int)$harga_paket;
+
+
+    $jumlah_tagihan_str=$_POST['jumlah_tagihan'];
+    $jumlah_tagihan=str_replace(".","",$jumlah_tagihan_str);
+    $jumlah_tagihan= (int)$jumlah_tagihan;
+
+    //echo "Layanan Penginapan : ".$layanan_penginapan;
+
+    $sql = "UPDATE daftar_pesanan SET id_paket_wisata= '$id_paket_wisata',nama_pemesan='$nama_pemesan', no_tlp= '$no_tlp', tanggal_pemesanan='$tgl_pesan', jumlah_peserta ='$jumlah_peserta', jumlah_hari='$jumlah_hari',akomodasi='$layanan_penginapan', transportasi='$layanan_transportasi', makanan='$layanan_makan', harga_paket='$harga_paket', total_tagihan='$jumlah_tagihan')WHERE id_daftar_pesanan=$id_daftar_pesanan";
+
+    mysqli_query($conn, $sql);
+    header("location: list_pemesanan.php");
+}
+?>

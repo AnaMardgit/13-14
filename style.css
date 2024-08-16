@@ -1,0 +1,278 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(72, 72, 85);
+}
+
+.main-container{
+    background-color: rgb(255, 255, 255);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+}
+
+.img-gambar{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.img-gambar img {
+    width: 20%;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    
+}
+
+.menu-header a{
+    flex: 1;
+    text-decoration: none;
+    background-color: rgb(23, 2, 119);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    text-align: center;
+}
+
+.menu-header a:hover{
+    background-color: rgb(31, 212, 77);
+    color: rgb(0, 0, 0);
+}
+
+.menu-header a.active-menu{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.konten-pariwisata{
+  
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info-container {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-self: flex-start;
+}
+
+.paket-container {
+    width: 300px;
+    margin: 10px;
+    border: 1px solid rgb(136, 129, 129);
+    padding: 10px;
+    height: fit-content;
+}
+
+.paket-container a{
+    display: block;
+    width: 60px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(151, 151, 196);
+    color: white;
+    padding: 5px 8px;
+    margin-top: 10px;
+}
+
+.paket-container a:hover{
+    background-color: rgb(44, 44, 100);
+}
+
+.paket-container h4{
+    color: rgb(83, 80, 80);
+    text-shadow: 2px 2px 8px #c9c6c6;
+}
+
+.paket-container h3{
+    color: rgb(0, 0, 0);
+
+    margin-bottom: 5px;
+}
+.paket-container img {
+    width: 100%;
+}
+
+.promosi-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.video-container {
+    width: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(136, 129, 129);
+    padding: 10px;
+}
+
+.video-container h3{
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 200px;
+}
+
+
+
+.brand-container{
+    width: 50%;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+
+.brand-container img{
+    width: 40%;
+    filter: contrast();
+    
+}
+
+.brand-container h1{
+    color: white;
+    font-size: 3.5vw;
+    text-shadow: 2px 2px 8px #000;
+    font-family: "Playwrite HR", cursive;font-optical-sizing: auto;font-weight: bold;
+    font-style: normal
+}
+
+.brand-container h2{
+    color: white;
+    font-size: 1.7vw;
+    text-shadow: 2px 2px 8px #000;
+    font-family: "Playwrite HR", cursive;font-optical-sizing: auto;font-weight: bold;
+    font-style: normal
+}
+
+.form-container
+.list-container{
+    padding: 10px;
+}
+
+.form-container h2
+.list-container h2{
+    margin-bottom: 10px;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+input{
+    width: 100%;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"], select {
+    width: 100%;
+    padding: 8px 5px;
+    margin-bottom: 15px;
+}
+
+.item-layanan{
+    display: flex;
+}
+
+.item-layanan label{
+    width: 200px;
+}
+
+input[type="checkbox"]{
+    width: 15px;
+}
+
+.layanan_container{
+    margin-bottom: 15px;
+}
+
+input[type="submit"], button{
+    width: 80px;
+    padding: 7px 0;
+}
+
+input[type="submit"], #btn-hitung{
+    background-color: rgb(123, 80, 163);
+}
+
+#btn-reset{
+    background-color: rgb(163, 71, 71);
+}
+
+input[type="submit"], #btn-hitung, #btn-riset{
+    color: white;
+}
+
+#harga_paket,
+#jumlah_tagihan,
+#jumlah_peserta, 
+#jumlah_hari{
+    text-align: center;
+}
+
+
+table{
+    border-collapse: collapse;
+}
+
+th,
+td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.table-container{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.btn-link a:first-child{
+    background-color: blue;
+    margin-bottom: 5px ;
+}
+
+.btn-link a:last-child{
+    background-color: rgb(255, 0, 13);
+
+}
+
+.btn-link a:first-child, .btn-link a:last-child{
+    display: block;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    width: 60px;
+    text-align: center;
+}
+
+.footer{
+    background-color: rgb(23, 2, 119);
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    color: white;
+}
+
+.footer h3{
+    text-align: center;
+    font-weight: normal;
+}
